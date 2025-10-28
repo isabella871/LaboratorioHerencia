@@ -1,5 +1,7 @@
 package clases;
 
+import java.util.Scanner;
+
 public class EmpleadoEventual extends Empleado{
     private Double honorariosPorHora;
     private String fechaTerminoDeContrato;
@@ -22,8 +24,19 @@ public class EmpleadoEventual extends Empleado{
         System.out.println("Fecha termino de contrato: "+fechaTerminoDeContrato+"\n");
     }
 
-
     //  registrar Usuarios
+    @Override
+    public void registrarDatos(){
+        super.registrarDatos();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Honorarios por hora ");
+        Double honorariosPH = scanner.nextDouble();
+
+        System.out.println("Fecha termino de contrato (dd/mm/aaaa): ");
+        String fechaTC = scanner.nextLine();
+    }
+
 
     public Double getHonorariosPorHora(){
         return honorariosPorHora;

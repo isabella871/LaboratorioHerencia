@@ -1,5 +1,7 @@
 package clases;
 
+import java.util.Scanner;
+
 public class EmpleadoPlanilla extends Empleado{
     private Double salarioMensual;
     private Double porcentajeAdicionalPorHoraExtra;
@@ -22,6 +24,17 @@ public class EmpleadoPlanilla extends Empleado{
     }
 
     //  registrar Usuarios
+    @Override
+    public void registrarDatos(){
+        super.registrarDatos();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Salario mensual: ");
+        Double salarioM = scanner.nextDouble();
+
+        System.out.println("Porcentaje adicional por hora extra: ");
+        Double porcentajeAHE = scanner.nextDouble();
+    }
 
     public Double getSalarioMensual(){
         return salarioMensual;

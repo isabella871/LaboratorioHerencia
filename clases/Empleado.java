@@ -38,9 +38,9 @@ public class Empleado extends Persona{
         String codigoE = scanner.nextLine();
 
         System.out.print("Ingrese el número de horas extra: ");
-        String hExtras = scanner.nextLine();
+        Integer hExtras = scanner.nextInt();
 
-        System.out.print("Ingrese la fecha de ingresp: ");
+        System.out.print("Ingrese la fecha de ingreso (dd/mm/aaaa): ");
         String fIngreso = scanner.nextLine();
 
         System.out.print("Ingrese el área: ");

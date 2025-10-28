@@ -33,7 +33,10 @@ public class Paciente extends Persona {
     //  registrar Usuarios
     @Override
     public void registrarDatos(){
+        super.registrarDatos();
+
         Scanner scanner = new Scanner(System.in);
+        listaMedicamentosAlergico = new ArrayList<String>();
 
         System.out.print("Ingrese el número de la historia clínica: ");
         String nhistoriaC = scanner.nextLine();
@@ -44,8 +47,19 @@ public class Paciente extends Persona {
         System.out.print("Ingrese el grupo sanguíneo: ");
         String grupoS = scanner.nextLine();
 
-        System.out.print("Ingrese los medicamentos de alergia: ");
-        String medicamentosA = scanner.nextLine();
+        String pregunta = ("Es alergico a algún medicamento? ingrese si o no");
+
+        if (pregunta.equalsIgnoreCase("si")){
+            String medicamento = "";
+            String continuar = "";
+            
+            do{
+                medicamento = ("Ingrese el nombre del medicamento al que es alergico");
+                listaMedicamentosAlergico.add(medicamento);
+
+                continuar = ("Ingrese si, si desea continuar");
+            }while (continuar.equalsIgnoreCase("si"));
+        }
 
         System.out.print("Ingrese la dirección: ");
         String direccion = scanner.nextLine();
