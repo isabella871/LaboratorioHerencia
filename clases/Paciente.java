@@ -56,7 +56,6 @@ public class Paciente extends Persona {
             do{
                 medicamento = ("Ingrese el nombre del medicamento al que es alergico");
                 listaMedicamentosAlergico.add(medicamento);
-
                 continuar = ("Ingrese si, si desea continuar");
             }while (continuar.equalsIgnoreCase("si"));
         }

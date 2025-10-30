@@ -7,7 +7,7 @@ import clasesEmpleado.EmpleadoPlanilla;
 import clasesEmpleado.Medico;
 
 public class Procesos {
-    ModeloDatos miModeloDatos;
+    ModeloDatos miModeloDatos = new ModeloDatos();
 
     Scanner scanner = new Scanner(System.in);
     int opcion = 0;
@@ -113,7 +113,7 @@ public class Procesos {
 
         switch (opcion) {
             case 1:
-                
+                miModeloDatos
                 break;
         
             default:
