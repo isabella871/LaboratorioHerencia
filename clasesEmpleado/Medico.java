@@ -1,4 +1,4 @@
-
+package clasesEmpleado;
 
 import java.util.Scanner;
 

@@ -61,11 +61,6 @@ public class Paciente extends Persona {
             }while (continuar.equalsIgnoreCase("si"));
         }
 
-        System.out.print("Ingrese la dirección: ");
-        String direccion = scanner.nextLine();
-
-        System.out.print("Ingrese la ciudad de procedencia: ");
-        String ciudadP = scanner.nextLine();
     }
 
 
