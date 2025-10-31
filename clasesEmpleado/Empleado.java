@@ -23,13 +23,15 @@ public class Empleado extends Persona{
     }
 
     @Override
-    public void imprimirDatos(){
-        super.imprimirDatos();
-        System.out.println("Código de empleado: "+codigoDeEmpleado+"\n");
-        System.out.println("Número de horas extra: "+numeroDeHorasExtras+"\n");
-        System.out.println("Fecha de ingreso: "+fechaDeIngreso+"\n");
-        System.out.println("Área: "+area+"\n");
-        System.out.println("Cargo: "+cargo+"\n");
+    public void imprimirDatosPersona(String datos){
+        super.imprimirDatosPersona(datos);
+        datos += "Código de empleado: "+codigoDeEmpleado+"\n";
+        datos += "Número de horas extra: "+numeroDeHorasExtras+"\n";
+        datos += "Fecha de ingreso: "+fechaDeIngreso+"\n";
+        datos +="Área: "+area+"\n";
+        datos +="Cargo: "+cargo+"\n";
+
+        System.out.println(datos);
     }
 
     @Override

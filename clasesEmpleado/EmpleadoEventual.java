@@ -18,10 +18,12 @@ public class EmpleadoEventual extends Empleado{
 
 
     @Override
-    public void imprimirDatos(){
-        super.imprimirDatos();
-        System.out.println("Honorarios por hora: "+honorariosPorHora+"\n");
-        System.out.println("Fecha termino de contrato: "+fechaTerminoDeContrato+"\n");
+    public void imprimirDatosPersona(String datos){
+        super.imprimirDatosPersona(datos);
+        datos += "Honorarios por hora: "+honorariosPorHora+"\n";
+        datos += "Fecha termino de contrato: "+fechaTerminoDeContrato+"\n";
+
+        System.out.println(datos);
     }
 
     //  registrar Usuarios

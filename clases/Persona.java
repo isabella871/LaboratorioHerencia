@@ -19,12 +19,14 @@ public class Persona {
         this.ciudadProcedencia = ciudadProcedencia;
     }
 
-    public void imprimirDatos(){
-        System.out.println("Nombre: "+nombre+"\n");
-        System.out.println("Apellido: "+apellido+"\n");
-        System.out.println("Fecha de nacimiento: "+fechaNacimiento+"\n");
-        System.out.println("Dirección: "+direccion+"\n");
-        System.out.println("Ciudad de Procedencia: "+ciudadProcedencia+"\n");
+    public void imprimirDatosPersona(String datos){
+        datos += "Nombre: "+nombre+"\n";
+        datos += "Apellido: "+apellido+"\n";
+        datos += "Fecha de nacimiento: "+fechaNacimiento+"\n";
+        datos += "Dirección: "+direccion+"\n";
+        datos += "Ciudad de Procedencia: "+ciudadProcedencia+"\n";
+
+        System.out.println(datos);
     }
 
 

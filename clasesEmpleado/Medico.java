@@ -19,10 +19,12 @@ public class Medico extends EmpleadoPlanilla{
     }
 
     @Override
-    public void imprimirDatos(){
-        super.imprimirDatos();
-        System.out.println("Especialidad: "+especialidad+"\n");
-        System.out.println("Numero de consultorio: "+numeroDeConsultorio+"\n");
+    public void imprimirDatosPersona(String datos){
+        super.imprimirDatosPersona(datos);
+        datos += "Especialidad: "+especialidad+"\n";
+        datos += "Numero de consultorio: "+numeroDeConsultorio+"\n";
+    
+        System.out.println(datos);
     }
 
 

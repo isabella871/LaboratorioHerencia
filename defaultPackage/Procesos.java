@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import clases.CitaMedica;
 import clases.ModeloDatos;
 import clases.Paciente;
 import clasesEmpleado.EmpleadoEventual;
@@ -17,7 +18,7 @@ public class Procesos {
         presentarMenuOpciones();
     }
 
-    private void presentarMenuOpciones(){
+    public void presentarMenuOpciones(){
         String menu = "---- MENÚ HOSPITAL ---- \n\n";
         menu+="1. Registrar Paciente\n";
         menu+="2. Registrar Empleado\n";
@@ -66,6 +67,7 @@ public class Procesos {
         miModeloDatos.registrarPersona(miPaciente);
     }
 
+
     //hay tres tipos de empleado: eventual, por planilla y médicp
     private void registrarEmpleado(){
         String menuTipEmpleado = "Registro de empleado\n";
@@ -109,17 +111,77 @@ public class Procesos {
         menuImprimirInfo += "3. Listar empleados por planilla\n";
         menuImprimirInfo += "4. Listar médicos\n";
         menuImprimirInfo += "5. Ingrese una opción\n";
+        menuImprimirInfo += "Ingrese una opción\n";
+        System.out.println("........................................................................\n");
         opcion = scanner.nextInt();
 
         switch (opcion) {
             case 1:
-                miModeloDatos
+                miModeloDatos.imprimirMiPacientes();
+                break;
+
+            case 2:
+                miModeloDatos.imprimirMiEmEventual();
+                break;
+
+            case 3:
+                miModeloDatos.imprimirMiEmPlanilla();
+                break;
+
+            case 4:
+                miModeloDatos.imprimirMiMedicos();
+                break;
+
+            case 5:
+                miModeloDatos.imprimirCitasProgramadas();
                 break;
         
             default:
+                System.out.println("No existe la opción ingresada");
                 break;
         }
     }
 
-    private void registrarCitaMedica(){}
+    public void registrarCitaMedica(){
+        System.out.println("Ingrese el documento del paciente");
+        String idPaciente = scanner.nextLine();
+
+        Paciente foundPaciente = miModeloDatos.consultarPacientePorID(idPaciente);
+        
+        if (foundPaciente != null) {
+            System.out.println("Ingrese el nombre del médico");
+            String nombreMedico = scanner.nextLine();
+            Medico foundMedico = miModeloDatos.consultarMedicoNombre(nombreMedico);
+
+            if (foundMedico != null) {
+                System.out.println("Ingrese el servicio o motivo de la consulta");
+                String servicio = scanner.nextLine();
+
+                System.out.println("Ingrese la fecha de la consulta");
+                String fechaConsulta = scanner.nextLine();
+
+                System.out.println("Ingrese la hora de la consulta");
+                String horaConsulta = scanner.nextLine();
+
+                String lugar = "La cita será en el consultorio " + foundMedico.getNumeroDeConsultorio();
+                CitaMedica miCita = new CitaMedica(foundPaciente, foundMedico, servicio, fechaConsulta, horaConsulta, lugar);
+                miModeloDatos.registrarCita(miCita);
+            }else{
+                System.out.println("El médico no está registrado en el sistema");
+            }
+        }else{
+            System.out.println("El paciente no se encuentra en el sistema");
+        }
+    }
+
+    public void imprimirCitasProgramadas(){
+        String msj = "Citas médicas programadas\n";
+        CitaMedica miCita = null;
+
+        System.out.println(msj + "\n");
+
+        if (citas) {
+            
+        }
+    }
 }

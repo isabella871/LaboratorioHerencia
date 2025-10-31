@@ -17,10 +17,12 @@ public class EmpleadoPlanilla extends Empleado{
     }
 
     @Override
-    public void imprimirDatos(){
-        super.imprimirDatos();
-        System.out.println("Salario mensual: "+salarioMensual+"\n");
-        System.out.println("Porcentaje adicional por hora extra: "+porcentajeAdicionalPorHoraExtra+"\n");
+    public void imprimirDatosPersona(String datos){
+        super.imprimirDatosPersona(datos);
+        datos += "Salario mensual: "+salarioMensual+"\n";
+        datos += "Porcentaje adicional por hora extra: "+porcentajeAdicionalPorHoraExtra+"\n";
+        
+        System.out.println(datos);
     }
 
     //  registrar Usuarios
