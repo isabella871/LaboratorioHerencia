@@ -1,6 +1,5 @@
 package clasesEmpleado;
-
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class EmpleadoEventual extends Empleado{
     private Double honorariosPorHora;
@@ -26,17 +25,14 @@ public class EmpleadoEventual extends Empleado{
         System.out.println(datos);
     }
 
+
     //  registrar Usuarios
     @Override
     public void registrarDatos(){
         super.registrarDatos();
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Honorarios por hora ");
-        Double honorariosPH = scanner.nextDouble();
-
-        System.out.println("Fecha termino de contrato (dd/mm/aaaa): ");
-        String fechaTC = scanner.nextLine();
+        honorariosPorHora = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor de su salario mensual"));
+        fechaTerminoDeContrato = JOptionPane.showInputDialog("Fecha termino de contrato (dd/mm/aaaa): ");
     }
 
 

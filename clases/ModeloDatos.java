@@ -32,7 +32,7 @@ public class ModeloDatos {
     }
 
     public void imprimirMiPacientes(){
-        String msj = "Pacientes Registrados \n";
+        String msj = "- - - - - Pacientes Registrados - - - - -  \n";
         Iterator<String> iterator = pacientesMap.keySet().iterator();
         
         while (iterator.hasNext()){
@@ -49,7 +49,8 @@ public class ModeloDatos {
     }
 
     public void imprimirMiEmPlanilla(){
-        String msj = "Empleados por planilla registrados\n";
+        String msj = "- - - - - Empleados por planilla registrados - - - - - \n";
+        
         for(EmpleadoPlanilla emP : empleadosPlanillaMap.values()){
             emP.imprimirDatosPersona(msj);
         }
@@ -63,7 +64,7 @@ public class ModeloDatos {
     }
 
     public void imprimirMiEmEventual(){
-        String msj = "Empleados eventuales registrados\n";
+        String msj = "- - - - - Empleados eventuales registrados - - - - -\n";
         for(String clave : empleadosEventualMap.keySet()){
             empleadosEventualMap.get(clave).imprimirDatosPersona(msj);
         }
@@ -77,7 +78,7 @@ public class ModeloDatos {
     }
 
     public void imprimirMiMedicos(){
-    String msj = "Medicos registrados\n";
+    String msj = " - - - - - Medicos registrados - - - - -\n";
 
         for(Map.Entry<String, Medico> elemento : medicosMap.entrySet()){
             //System.out.println("Key = " + elemento.getKey() + ", value = " + elemento.getValue());
@@ -110,5 +111,21 @@ public class ModeloDatos {
             }
         }
         return null;
+    }
+
+    public void imprimirCitasProgramadas(){
+        String msj = "- - - - - Citas Médicas Programadas - - - - - \n";
+        CitaMedica miCita = null;
+
+        System.out.println(msj + "\n");
+
+        if (citaList.size()>0) {
+            for (int i = 0; i < citaList.size(); i ++){
+                miCita = citaList.get(i);
+                System.out.println(miCita.infoCitaMedica());
+            }
+        }else{
+            System.out.println("No existem citas programadas");
+        }
     }
 }

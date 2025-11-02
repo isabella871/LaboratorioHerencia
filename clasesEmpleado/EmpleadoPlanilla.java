@@ -1,6 +1,6 @@
 package clasesEmpleado;
+import javax.swing.JOptionPane;
 
-import java.util.Scanner;
 
 public class EmpleadoPlanilla extends Empleado{
     private Double salarioMensual;
@@ -30,12 +30,8 @@ public class EmpleadoPlanilla extends Empleado{
     public void registrarDatos(){
         super.registrarDatos();
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Salario mensual: ");
-        Double salarioM = scanner.nextDouble();
-
-        System.out.println("Porcentaje adicional por hora extra: ");
-        Double porcentajeAHE = scanner.nextDouble();
+        salarioMensual = Double.parseDouble(JOptionPane.showInputDialog("Salario mensual: "));
+        porcentajeAdicionalPorHoraExtra = Double.parseDouble(JOptionPane.showInputDialog("Porcentaje adicional por hora extra: "));
     }
 
     public Double getSalarioMensual(){

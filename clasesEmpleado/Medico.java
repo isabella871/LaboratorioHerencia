@@ -1,6 +1,6 @@
 package clasesEmpleado;
+import javax.swing.JOptionPane;
 
-import java.util.Scanner;
 
 public class Medico extends EmpleadoPlanilla{
     private String especialidad;
@@ -33,13 +33,8 @@ public class Medico extends EmpleadoPlanilla{
     public void registrarDatos(){
         super.registrarDatos();
 
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Ingrese su especialidad: ");
-        String especialidad = scanner.nextLine();
-
-        System.out.println("Ingrese el número de consultorio: ");
-        Integer numConsultorio = scanner.nextInt();
+        especialidad = JOptionPane.showInputDialog("Ingrese su especialidad: ");
+        numeroDeConsultorio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de consultorio: "));
     }
 
 

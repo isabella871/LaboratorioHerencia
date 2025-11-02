@@ -20,7 +20,7 @@ public class CitaMedica {
     }
 
     public String infoCitaMedica(){
-        String datosC = "Datos cita médica\n";
+        String datosC = " < < < < < <  Datos cita médica  > > > > > \n";
         datosC += "Paciente: " + paciente.getNombre() + "\n";
         datosC += "Medico: " + medico.getNombre() + "\n";
         datosC += "Motivo de consulta: " + servicio + "\n";

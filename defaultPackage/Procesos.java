@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 import clases.CitaMedica;
 import clases.ModeloDatos;
@@ -8,9 +8,7 @@ import clasesEmpleado.EmpleadoPlanilla;
 import clasesEmpleado.Medico;
 
 public class Procesos {
-    ModeloDatos miModeloDatos = new ModeloDatos();
-
-    Scanner scanner = new Scanner(System.in);
+    ModeloDatos miModeloDatos;
     int opcion = 0;
 
     public Procesos(){
@@ -19,51 +17,33 @@ public class Procesos {
     }
 
     public void presentarMenuOpciones(){
-        String menu = "---- MENÚ HOSPITAL ---- \n\n";
+        String menu = "---- MENÚ HOSPITAL ---- \n";
         menu+="1. Registrar Paciente\n";
         menu+="2. Registrar Empleado\n";
         menu+="3. Registrar Cita Médica\n";
         menu+="4. Imprimir Información\n";
         menu+="5. Salir\n\n";
         menu+="Ingrese una opción\n";
-        opcion = scanner.nextInt();
+        int opcion = 0;
 
         do{
-            System.out.println((menu));
-
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(menu));
             switch (opcion) {
-                case 1:
-                    registrarPaciente();
-                    break;
-
-                case 2:
-                    registrarEmpleado();
-                    break;
-
-                case 3:
-                    registrarCitaMedica();
-                    break;
-
-                case 4:
-                    imprimirInformacion();
-                    break;
-
-                case 5:
-                    System.out.println("El sistema ha terminado");
-                    break;
+                case 1: registrarPaciente();    break;
+                case 2: registrarEmpleado();    break;
+                case 3: registrarCitaMedica();  break;
+                case 4: imprimirInformacion();  break;
+                case 5: System.out.println("El sistema ha terminado");  break;
             
-                default:
-                    System.out.println("No existe el código, verifique nuevamente");
-                    break;
+                default:    System.out.println("No existe el código, verifique nuevamente");    break;
             }
         }while (opcion != 5);
-
     }
+
 
     private void registrarPaciente(){
         Paciente miPaciente = new Paciente(null, null, null, null, null, null, null, null, null, null);
         miPaciente.registrarDatos();
-
         miModeloDatos.registrarPersona(miPaciente);
     }
 
@@ -75,7 +55,7 @@ public class Procesos {
         menuTipEmpleado += "2. Empleado por planilla\n";
         menuTipEmpleado += "Seleccione el tipo de empleado a registrar\n";
         
-        int tipoEmpleado = scanner.nextInt();
+        int tipoEmpleado = Integer.parseInt(JOptionPane.showInputDialog(menuTipEmpleado));
         
         switch (tipoEmpleado) {
             case 1:
@@ -85,8 +65,7 @@ public class Procesos {
                 break;
 
             case 2:
-                System.out.println("Ingrese 1, si es un médico, de lo contrario, es otro tipo de empleado");
-                String resp = scanner.nextLine();
+                String resp = JOptionPane.showInputDialog("Ingrese 1, si es un médico, de lo contrario, es otro tipo de empleado");
 
                 if (resp.equalsIgnoreCase("si")){
                     Medico miMedico = new Medico(resp, resp, resp, resp, resp, resp, resp, null, resp, resp, menuTipEmpleado, null, null, resp, null);
@@ -110,31 +89,18 @@ public class Procesos {
         menuImprimirInfo += "2. Listar empleados Eventuales\n";
         menuImprimirInfo += "3. Listar empleados por planilla\n";
         menuImprimirInfo += "4. Listar médicos\n";
-        menuImprimirInfo += "5. Ingrese una opción\n";
+        menuImprimirInfo += "5. Listar citas programadas\n";
         menuImprimirInfo += "Ingrese una opción\n";
         System.out.println("........................................................................\n");
-        opcion = scanner.nextInt();
+        
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog(menuImprimirInfo));
 
         switch (opcion) {
-            case 1:
-                miModeloDatos.imprimirMiPacientes();
-                break;
-
-            case 2:
-                miModeloDatos.imprimirMiEmEventual();
-                break;
-
-            case 3:
-                miModeloDatos.imprimirMiEmPlanilla();
-                break;
-
-            case 4:
-                miModeloDatos.imprimirMiMedicos();
-                break;
-
-            case 5:
-                miModeloDatos.imprimirCitasProgramadas();
-                break;
+            case 1: miModeloDatos.imprimirMiPacientes();    break;
+            case 2: miModeloDatos.imprimirMiEmEventual();   break;
+            case 3: miModeloDatos.imprimirMiEmPlanilla();   break;
+            case 4: miModeloDatos.imprimirMiMedicos();  break;
+            case 5: miModeloDatos.imprimirCitasProgramadas();   break;
         
             default:
                 System.out.println("No existe la opción ingresada");
@@ -143,45 +109,26 @@ public class Procesos {
     }
 
     public void registrarCitaMedica(){
-        System.out.println("Ingrese el documento del paciente");
-        String idPaciente = scanner.nextLine();
-
-        Paciente foundPaciente = miModeloDatos.consultarPacientePorID(idPaciente);
+        String idPaciente = JOptionPane.showInputDialog("Ingrese el documento del paciente");
+        Paciente pacienteEncontrado = miModeloDatos.consultarPacientePorID(idPaciente);
         
-        if (foundPaciente != null) {
-            System.out.println("Ingrese el nombre del médico");
-            String nombreMedico = scanner.nextLine();
-            Medico foundMedico = miModeloDatos.consultarMedicoNombre(nombreMedico);
+        if (pacienteEncontrado != null) {
+            String nombreMedico = JOptionPane.showInputDialog("Ingrese el nombre del médico");
+            Medico medicoEncontrado = miModeloDatos.consultarMedicoNombre(nombreMedico);
 
-            if (foundMedico != null) {
-                System.out.println("Ingrese el servicio o motivo de la consulta");
-                String servicio = scanner.nextLine();
-
-                System.out.println("Ingrese la fecha de la consulta");
-                String fechaConsulta = scanner.nextLine();
-
-                System.out.println("Ingrese la hora de la consulta");
-                String horaConsulta = scanner.nextLine();
-
-                String lugar = "La cita será en el consultorio " + foundMedico.getNumeroDeConsultorio();
-                CitaMedica miCita = new CitaMedica(foundPaciente, foundMedico, servicio, fechaConsulta, horaConsulta, lugar);
+            if (medicoEncontrado != null) {
+                String servicio = JOptionPane.showInputDialog("Ingrese el servicio o motivo de la consulta");
+                String fechaConsulta = JOptionPane.showInputDialog("Ingrese la fecha de la consulta");
+                String horaConsulta = JOptionPane.showInputDialog("Ingrese la hora de la consulta");
+                String lugar = "La cita será en el consultorio " + medicoEncontrado.getNumeroDeConsultorio();
+                CitaMedica miCita = new CitaMedica(pacienteEncontrado, medicoEncontrado, servicio, fechaConsulta, horaConsulta, lugar);
                 miModeloDatos.registrarCita(miCita);
+
             }else{
                 System.out.println("El médico no está registrado en el sistema");
             }
         }else{
             System.out.println("El paciente no se encuentra en el sistema");
-        }
-    }
-
-    public void imprimirCitasProgramadas(){
-        String msj = "Citas médicas programadas\n";
-        CitaMedica miCita = null;
-
-        System.out.println(msj + "\n");
-
-        if (citas) {
-            
         }
     }
 }

@@ -1,13 +1,15 @@
 package clases;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 public class Paciente extends Persona {
     private Integer numeroHistoriaClinica;
     private String sexo;
     private String grupoSanguineo;
     private ArrayList<String> listaMedicamentosAlergico;
+
 
     public Paciente(String numeroDNI, String nombre, String apellido, String fechaNacimiento, String direccion, String ciudadProcedencia, 
                     Integer numeroHistoriaClinica, String sexo, String grupoSanguineo, ArrayList<String> listaMedicamentoAlergico){
@@ -31,7 +33,7 @@ public class Paciente extends Persona {
         if(listaMedicamentosAlergico.size()>0){
             datos += "Lista de medicamentos a los que es alergico: "+listaMedicamentosAlergico+"\n";
             
-            for(int i =0; i < listaMedicamentosAlergico.size(); i++){
+            for(int i = 0; i < listaMedicamentosAlergico.size(); i++){
                 datos += "\t" + listaMedicamentosAlergico.get(i) + "\n";
             }
         
@@ -48,28 +50,20 @@ public class Paciente extends Persona {
     public void registrarDatos(){
         super.registrarDatos();
 
-        Scanner scanner = new Scanner(System.in);
         listaMedicamentosAlergico = new ArrayList<String>();
-
-        System.out.print("Ingrese el número de la historia clínica: ");
-        String nhistoriaC = scanner.nextLine();
-
-        System.out.print("Ingrese su sexo: ");
-        String sexo = scanner.nextLine();
-
-        System.out.print("Ingrese el grupo sanguíneo: ");
-        String grupoS = scanner.nextLine();
-
-        String pregunta = ("Es alergico a algún medicamento? ingrese si o no");
+        numeroHistoriaClinica = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de la historia clínica"));
+        sexo = JOptionPane.showInputDialog("Ingrese el sexo");
+        grupoSanguineo = JOptionPane.showInputDialog("Ingrese el grupo sanguineo");
+        String pregunta = JOptionPane.showInputDialog("Tiene alergía a algún medicamento? Ingrese sí o no ");
 
         if (pregunta.equalsIgnoreCase("si")){
             String medicamento = "";
             String continuar = "";
             
             do{
-                medicamento = ("Ingrese el nombre del medicamento al que es alergico");
+                medicamento = JOptionPane.showInputDialog("Ingrese el nombre del medicamento al que es alergico");
                 listaMedicamentosAlergico.add(medicamento);
-                continuar = ("Ingrese si, si desea continuar");
+                continuar = JOptionPane.showInputDialog("Ingrese si, si desea continuar");
             }while (continuar.equalsIgnoreCase("si"));
         }
 

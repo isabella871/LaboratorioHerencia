@@ -1,8 +1,8 @@
 package clasesEmpleado;
-
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 import clases.Persona;
+
 
 public class Empleado extends Persona{
     private String codigoDeEmpleado;
@@ -36,22 +36,12 @@ public class Empleado extends Persona{
 
     @Override
     public void registrarDatos(){
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Ingrese el código de empleado: ");
-        String codigoE = scanner.nextLine();
-
-        System.out.print("Ingrese el número de horas extra: ");
-        Integer hExtras = scanner.nextInt();
-
-        System.out.print("Ingrese la fecha de ingreso (dd/mm/aaaa): ");
-        String fIngreso = scanner.nextLine();
-
-        System.out.print("Ingrese el área: ");
-        String area = scanner.nextLine();
-
-        System.out.print("Ingrese el cargo: ");
-        String cargo = scanner.nextLine();
+        codigoDeEmpleado = JOptionPane.showInputDialog("Ingrese el código de empleado: ");
+        numeroDeHorasExtras = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de horas extra: "));
+        fechaDeIngreso = JOptionPane.showInputDialog("Ingrese la fecha de ingreso (dd/mm/aaaa): ");
+        area = JOptionPane.showInputDialog("Ingrese el área: ");
+        cargo = JOptionPane.showInputDialog("Ingrese el cargo: ");
     }
 
 

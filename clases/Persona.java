@@ -1,6 +1,6 @@
 package clases;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Persona {
     private String numeroDNI;
@@ -9,6 +9,8 @@ public class Persona {
     private String fechaNacimiento;
     private String direccion;
     private String ciudadProcedencia;
+
+    public Persona () {}
 
     public Persona(String numeroDNI, String nombre, String apellido, String fechaNacimiento, String direccion, String ciudadProcedencia){
         this.numeroDNI = numeroDNI;
@@ -32,25 +34,12 @@ public class Persona {
 
     //  registrar Usuarios
     public void registrarDatos(){
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese el número de documento: ");
-        String ndocumento = scanner.nextLine();
-
-        System.out.print("Ingrese el nombre: ");
-        String nombre = scanner.nextLine();
-
-        System.out.print("Ingrese el apellido: ");
-        String apellido = scanner.nextLine();
-
-        System.out.print("Ingrese la fecha de nacimiento (dd/mm/aaaa): ");
-        String fechaN = scanner.nextLine();
-
-        System.out.print("Ingrese la dirección: ");
-        String direccion = scanner.nextLine();
-
-        System.out.print("Ingrese la ciudad de procedencia: ");
-        String ciudadP = scanner.nextLine();
+        numeroDNI = JOptionPane.showInputDialog("Ingrese el número de documento:");
+        nombre= JOptionPane.showInputDialog("Ingrese el nombre:");
+        apellido = JOptionPane.showInputDialog("Ingrese el apellido:");
+        fechaNacimiento = JOptionPane.showInputDialog("Ingrese la fecha de nacimiento (dd/mm/aaaa):");
+        direccion = JOptionPane.showInputDialog("Ingrese la dirección:");
+        ciudadProcedencia = JOptionPane.showInputDialog("Ingrese la ciudad de procedencia:");
     }
 
 
